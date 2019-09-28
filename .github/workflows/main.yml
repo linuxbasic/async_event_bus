@@ -5,8 +5,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - name: Install tox
-      uses: docker://python:3.7-alpine
-      run: |
+    - uses: actions/setup-python@v1
+      with:
+        python-version: '3.7' 
+        architecture: 'x86'
+    - run: |
         pip install tox
         tox
