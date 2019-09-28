@@ -1,15 +1,12 @@
 name: CI
-
 on: [push]
-
 jobs:
   build:
-
-    runs-on: python:3.7-alpine
-    
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
     - name: Install tox
-      run: pip install tox
-    - name: Run tox
-      run: tox
+      uses: docker://python:3.7-alpine
+      run: |
+        pip install tox
+        tox
