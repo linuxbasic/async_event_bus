@@ -6,11 +6,7 @@ import threading
 from typing import Set, Any
 
 def get_messages(queue: Queue, count: int) -> Set[Any]:
-    result = set()
-    for _ in range(count):
-        result.add(queue.get(timeout=1))
-
-    return result
+    return {queue.get(timeout=1) for _ in range(count)}
 
 def test_producer():
     debug_queue = Queue()
