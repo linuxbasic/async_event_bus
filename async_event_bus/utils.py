@@ -84,8 +84,4 @@ async def get_from_queue_or_stop(queue: asyncio.Queue, stop_event: asyncio.Event
         return
 
 def get_messages(queue: Queue, count: int, timeout: int = 1) -> Set[Any]:
-    result = set()
-    for _ in range(count):
-        result.add(queue.get(timeout=timeout))
-
-    return result
+    return {queue.get(timeout=timeout) for _ in range(count)}
