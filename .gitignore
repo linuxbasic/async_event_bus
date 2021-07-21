@@ -1,3 +1,5 @@
 .tox
 *.egg-info
 *.pyc
+.DS_Store
+.vscode
